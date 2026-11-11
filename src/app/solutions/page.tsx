@@ -1,139 +1,87 @@
 import type { Metadata } from "next";
-import { ArrowDown, Check } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
-import ProductCard from "@/components/ProductCard";
-import HeroVisual from "@/components/HeroVisual";
-import CtaBand from "@/components/CtaBand";
+import ProductShowcase from "@/components/ProductShowcase";
+import ProductNav from "@/components/ProductNav";
 import ButtonLink from "@/components/ButtonLink";
-import ProductMark, { accentClasses } from "@/components/ProductMark";
-import { products } from "@/lib/products";
+import { AppFrame, ProductScreen } from "@/components/mockups";
+import { company, products } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Solutions",
-  description: "FlowOps, Customer360 and InsightIQ: an integrated digital ecosystem for operations, customer relationships and business intelligence.",
+  title: "Our Solutions",
+  description: "NextWave One, NextWave Insights and NextWave Solutions: technology that helps companies manage their operations, customers and data.",
   alternates: { canonical: "/solutions" },
 };
 
-const compareRows = [
-  { label: "Core question", values: ["How is our work getting done?", "How well do we know our customers?", "What is the data telling us?"] },
-  { label: "Primary users", values: ["Operations managers and delivery teams", "Sales, account and service teams", "Leaders, analysts and managers"] },
-  { label: "Focus", values: ["Workflows, tasks and execution", "Profiles, interactions and relationships", "Dashboards, analytics and trends"] },
-  { label: "Main outcome", values: ["Consistent, visible operations", "Stronger, more consistent relationships", "Faster, better-informed decisions"] },
-];
-
-const flow = [
-  "Customer360 records customer needs and interactions.",
-  "FlowOps turns commitments into coordinated work.",
-  "InsightIQ shows how operations and relationships affect performance.",
-  "Leaders act on insight — and the cycle improves.",
-];
+function HeroStack() {
+  return (
+    <div className="relative mx-auto w-full max-w-[560px] pb-8" aria-hidden>
+      <div className="absolute inset-[6%] rounded-full bg-gradient-to-tr from-violet/25 via-azure/20 to-cyan/20 blur-3xl" />
+      <div className="relative translate-x-4 opacity-60 sm:translate-x-10">
+        <AppFrame title="NextWave Solutions" active={4}>
+          <ProductScreen product="nextwave-solutions" tab="workflows" />
+        </AppFrame>
+      </div>
+      <div className="relative -mt-36 -translate-x-2 sm:-mt-44 sm:-translate-x-6">
+        <AppFrame title="NextWave Insights · Business analytics" active={3}>
+          <ProductScreen product="nextwave-insights" tab="analytics" />
+        </AppFrame>
+      </div>
+    </div>
+  );
+}
 
 export default function SolutionsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Solutions"
-        title={<>An integrated <span className="text-gradient">digital ecosystem</span> for your business.</>}
-        lead="Three solutions that each solve a core business challenge, and work even better together: FlowOps manages business operations, Customer360 connects customer relationships, and InsightIQ turns business information into actionable insights."
-        crumbs={[{ href: "/solutions", label: "Solutions" }]}
-        aside={<div className="hidden lg:block"><HeroVisual /></div>}
+        eyebrow="Our solutions"
+        title={<>Three product lines for <span className="text-gradient">smarter business.</span></>}
+        lead={company.business}
+        aside={<HeroStack />}
       >
-        <a href="#products" className="inline-flex items-center gap-2 text-sm font-semibold text-cyan hover:text-white">
-          Explore the solutions <ArrowDown aria-hidden className="h-4 w-4" />
+        <a href={`#${products[0].id}`} className="inline-flex items-center gap-2 text-sm font-semibold text-cyan hover:text-fg">
+          Explore the product lines <ArrowDown aria-hidden className="h-4 w-4" />
         </a>
       </PageHero>
 
-      <section id="products" className="scroll-mt-24 py-20 sm:py-24" aria-label="Products">
-        <div className="container-x grid gap-6 md:grid-cols-3">
-          {products.map((p, i) => (
-            <Reveal key={p.slug} delay={i * 90}>
-              <ProductCard product={p} />
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <div className="relative">
+        <ProductNav />
+        {products.map((p, i) => (
+          <section
+            key={p.id}
+            id={p.id}
+            aria-labelledby={`${p.id}-heading`}
+            className={`scroll-mt-28 overflow-x-clip py-20 sm:py-28 ${i % 2 === 0 ? "" : "bg-base-2"} ${i === 0 ? "-mt-[52px] pt-28 sm:pt-36" : ""}`}
+          >
+            <div className="container-x">
+              <Reveal>
+                <ProductShowcase product={p} index={i} reverse={i % 2 === 1} />
+              </Reveal>
+            </div>
+          </section>
+        ))}
+      </div>
 
-      {/* HOW THEY WORK TOGETHER */}
-      <section className="bg-surface py-20 sm:py-24" aria-labelledby="together-heading">
+      <section className="section" aria-labelledby="connected-heading">
         <div className="container-x">
-          <Reveal>
-            <SectionHeading id="together-heading" eyebrow="How they work together" title="Each solution has a role. Together they cover the whole business." />
-          </Reveal>
-
-          <Reveal className="mt-12 overflow-x-auto rounded-3xl border border-line bg-white">
-            <table className="w-full min-w-[720px] text-left">
-              <caption className="sr-only">Comparison of FlowOps, Customer360 and InsightIQ</caption>
-              <thead>
-                <tr className="border-b border-line">
-                  <th scope="col" className="w-48 p-6 text-sm font-semibold text-ink-3"><span className="sr-only">Attribute</span></th>
-                  {products.map((p) => (
-                    <th key={p.slug} scope="col" className="p-6">
-                      <div className="flex items-center gap-3">
-                        <ProductMark product={p} />
-                        <div>
-                          <p className="font-display text-lg font-semibold text-ink">{p.name}</p>
-                          <p className={`text-sm font-medium ${accentClasses[p.accent].text}`}>{p.role}</p>
-                        </div>
-                      </div>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {compareRows.map((r) => (
-                  <tr key={r.label} className="border-b border-line last:border-0">
-                    <th scope="row" className="p-6 align-top text-sm font-semibold text-ink">{r.label}</th>
-                    {r.values.map((v, i) => (
-                      <td key={i} className="p-6 align-top text-[0.95rem] leading-7 text-ink-2">{v}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </Reveal>
-
-          <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
-            <Reveal>
-              <h3 className="text-2xl font-semibold text-ink">A connected cycle of improvement</h3>
-              <p className="mt-3 text-lg leading-8 text-ink-2">
-                When customer knowledge, operational execution and business insight are connected, each one strengthens the others.
-                Organizations can start with one solution and add the others as their needs develop.
+          <Reveal className="glass relative overflow-hidden rounded-[var(--radius-panel)] p-8 text-center sm:p-14">
+            <div aria-hidden className="bg-grid absolute inset-0" />
+            <div className="relative mx-auto max-w-2xl">
+              <p className="eyebrow justify-center"><span aria-hidden className="h-px w-6 bg-cyan/70" />Connected by design</p>
+              <h2 id="connected-heading" className="t-section mt-4">Each product line plays its part in our strategy.</h2>
+              <p className="t-lead mt-5">
+                {products.map((p) => `${p.name}: ${p.role.toLowerCase()}`).join(" · ")}.
               </p>
-              <div className="mt-7"><ButtonLink href="/contact">Talk to our team</ButtonLink></div>
-            </Reveal>
-            <ol className="space-y-3">
-              {flow.map((f, i) => (
-                <Reveal as="li" key={f} delay={i * 80} className="flex items-start gap-4 rounded-2xl border border-line bg-white p-5">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-electric text-sm font-semibold text-white">{i + 1}</span>
-                  <p className="pt-1 text-ink-2">{f}</p>
-                </Reveal>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section className="py-20 sm:py-24" aria-labelledby="services-heading">
-        <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-center">
-          <Reveal>
-            <SectionHeading id="services-heading" eyebrow="Subscription software + services" title="More than software." lead="Our solutions are offered on a subscription basis and supported by enterprise technology services, so clients have the help they need to adopt them successfully." />
-          </Reveal>
-          <Reveal delay={100}>
-            <ul className="grid gap-3 sm:grid-cols-2">
-              {["Solution consultation", "Implementation support", "Onboarding and enablement", "Ongoing customer success", "Configuration to your processes", "Regular value reviews"].map((s) => (
-                <li key={s} className="flex items-center gap-3 rounded-2xl bg-surface px-5 py-4 font-medium text-ink">
-                  <Check aria-hidden className="h-5 w-5 text-electric" /> {s}
-                </li>
-              ))}
-            </ul>
+              <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+                <ButtonLink href="/strategy">Explore Our Strategy</ButtonLink>
+                <ButtonLink href="/about" variant="ghost" arrow={false}>About NextWave</ButtonLink>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
-
-      <CtaBand title="Find the right combination for your business." cta="Request a Demonstration" />
     </>
   );
 }

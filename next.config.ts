@@ -16,6 +16,20 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: root,
   turbopack: { root },
   images: { formats: ["image/avif", "image/webp"] },
+  // Earlier URLs keep working after the move to four pages.
+  async redirects() {
+    return [
+      { source: "/solutions/flowops", destination: "/solutions#nextwave-one", permanent: true },
+      { source: "/solutions/customer360", destination: "/solutions#nextwave-one", permanent: true },
+      { source: "/solutions/insightiq", destination: "/solutions#nextwave-insights", permanent: true },
+      { source: "/solutions/:slug", destination: "/solutions", permanent: true },
+      { source: "/industries", destination: "/solutions", permanent: true },
+      { source: "/insights/:path*", destination: "/solutions", permanent: true },
+      { source: "/careers", destination: "/about", permanent: true },
+      { source: "/contact", destination: "/about", permanent: true },
+      { source: "/company", destination: "/about", permanent: true },
+    ];
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },

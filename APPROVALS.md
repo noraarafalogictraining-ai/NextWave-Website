@@ -1,42 +1,30 @@
-# Content requiring approval
+# Content notes and items to confirm
 
-The brief was cross-checked against the content inside the internal platform's source code (`src/ScoreSimulation.jsx`, Version 18, `SIM_CONFIG`). The live reference site could not be opened from the build environment. Each item below names what the website uses now and where to change it.
+The public beta site could not be opened from the build environment. All established content comes from the NextWave company profile: the `SIM_CONFIG` content in the internal platform, read only and never modified. Everything a person may want to edit is in `src/lib/content.ts`.
 
-## 1. Conflicts between the brief and the existing internal platform (decide first)
+## Used exactly as established
+- Name, logo and slogan ("Smarter Business. Better Experiences.")
+- Facts: founded 2017; headquarters Cairo, Egypt; approximately 650 employees; Egypt and selected MENA markets
+- Customers: mid-sized and large organizations across banking, telecom, retail, hospitality and professional services
+- Mission and vision. These now use the company-profile wording and replace the earlier draft wording.
+- Products and descriptions: NextWave One (Business Management Platform), NextWave Insights (Data & AI Solution), NextWave Solutions (Customized Technology Solutions), plus their strategic roles (Protect the core / Build the future / Capture high-value opportunities). These replace FlowOps / Customer360 / InsightIQ.
+- Values: Customer First, Own the Outcome, Better Together, Keep Evolving
+- Competency names: the six listed in the profile
+- 2027 strategy: "Scale Without Losing What Made Us Successful" and the four priorities and targets, word for word (18% revenue growth; retention 88% → 93%; on-time delivery 82% → 92%; Build, which has no numeric target)
+- Competitive context: the two established statements plus the customer description
 
-| Item | Website uses | Brief | Internal platform v18 | Where to change |
-|---|---|---|---|---|
-| **Products** | FlowOps, Customer360, InsightIQ | FlowOps, Customer360, InsightIQ | NEXTWAVE ONE (Business Management Platform), NEXTWAVE INSIGHTS (Data & AI Solution), NEXTWAVE SOLUTIONS (Customized Technology Solutions) | `src/lib/products.ts` |
-| **Slogan** | "Smarter Business. Better Experiences." | "Smarter Systems. Stronger Business." (proposed, to be used only if no approved slogan exists) | "Smarter Business. Better Experiences." | `company.slogan` in `src/lib/site.ts` |
-| **Values** | Customer First · Own the Outcome · Better Together · Keep Evolving | Customer Focus · Innovation · Collaboration · Accountability · Continuous Improvement (proposed) | Customer First · Own the Outcome · Better Together · Keep Evolving | `values` in `src/lib/site.ts` |
-| **Mission** | Brief wording | "To simplify business complexity through practical technology solutions…" | "To help organizations manage their operations, customers and data more effectively through smart technology that improves performance and creates lasting customer value." | `company.mission` |
-| **Vision** | Brief wording | "To become a trusted digital technology partner…" | "To shape the future of business through smarter, connected digital experiences." | `company.vision` |
-| **Competitor** | Not named publicly | Elevate | Valtora | Not displayed |
+## Written for the website. Please confirm or replace.
+1. **Competency descriptions.** The company profile has the six names but no definitions, so each card has a one-sentence neutral description.
+2. **Value explanations.** These are carried over from the previous version of this website. The profile lists only the names.
+3. **"Why it matters" text for each strategic priority**, and short headings such as "Grow revenue". Both paraphrase the established objectives and add no new targets.
+4. **Product feature tabs** (three per product). Each is derived from the established one-line product description, and none adds a new product or capability.
+5. **"Why NextWave?" statements.** These are derived from the products and the mission. There are no leadership, ROI or customer-result claims.
+6. **Our Story.** Only three points are used: 2017 (founded), today (the established facts) and 2027 (the strategy). No milestones were invented.
 
-Notes:
-- **Products:** the brief names these products and requires them, so the website uses them. If v18 is still the live version, its product names differ, and participants will see two different product sets. Either rename the products on the website or update the internal platform.
-- **Slogan and values:** the brief says to keep the existing approved versions when they exist, so the website uses the internal platform's wording.
-- **Mission and vision:** the brief states these without a fallback rule, so the website uses the brief's wording. They differ from v18 and should be aligned.
-- **Competitor:** a public corporate website would not name a competitor, so neither name appears.
+## Deliberately not shown
+- Any link to the Employee Portal or Performance Hub, and any simulation, round, scoreboard, Team Health or Commercial Hub content
+- The Valtora competitor event and any employee, team or performance information
+- Contact details, social accounts and legal pages. None are established.
 
-## 2. Facts deliberately left off the website
-
-The internal platform lists **Founded 2017**, **Headquarters Cairo, Egypt**, **approximately 650 employees** and **Egypt and selected MENA markets**. The brief says not to publish founding dates or office locations, so none of these appear. Add them only once approved.
-
-## 3. Contact details and form delivery
-
-- The website shows **no** address, phone number or email address.
-- The contact form runs in demonstration mode until `NEXT_PUBLIC_CONTACT_ENDPOINT` is set (see README).
-
-## 4. Generated content to review
-
-- **Product content:** features follow the brief exactly. The overview text, business challenges and example use cases were written for the site and make no technical, integration or certification claims.
-- **Industries:** four sectors with generic challenges. No named customers and no partnerships.
-- **Insights:** five articles credited to team bylines ("NextWave Insights Team", "NextWave Customer Success Team" and so on), not to named people. They contain no statistics, external research or quotations.
-- **Careers:** shows "There are no open positions listed at the moment."
-- **Visuals:** abstract SVG and CSS illustrations only. There is no stock photography, and no illustration shows real people or numbers. Department "photography" can replace `DeptIllustration` later.
-- **Logo:** the official NextWave logo (on-dark and on-light versions), taken unchanged from the internal platform's assets. The favicon is the "N" mark cropped from that logo.
-
-## 5. Confidentiality check
-
-The public site does not mention any of the following: employee names, ratings, performance records, Employee Pulse, KPI records, coaching conversations, internal emails, stakeholder conflicts, the Valtora event, strategy targets or commercial results. The words "simulation", "SCORE", "training" and "gamification" do not appear in any page text. The only public mention of the internal platform's name is "NextWave Performance Hub", in the footer's Employee Access block.
+## Sample visuals
+Product interfaces are illustrative mockups labelled "Illustrative preview". They use shapes and generic labels, not figures, so nothing reads as real NextWave or customer data.

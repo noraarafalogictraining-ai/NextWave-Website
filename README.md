@@ -1,54 +1,43 @@
 # NextWave Digital — Corporate Website
 
-Public corporate website for **NextWave Digital**. It is a standalone Next.js project, separate from the internal NextWave Performance Hub, and it deploys on Vercel as its own project.
+Public corporate website for **NextWave Digital**: four pages built with Next.js and deployed on Vercel. It is completely separate from the internal NextWave Performance Hub and does not link to it.
 
-- **Stack:** Next.js 16 (App Router), TypeScript, Tailwind CSS 4, Lucide icons. There is no other UI or animation library. Transitions use CSS and an IntersectionObserver.
-- **Output:** every page is prerendered as static HTML (21 routes). There is no server or database.
-- **Employee Portal:** a plain HTTPS link to `https://score-simulation.vercel.app/` that opens in a new tab. It appears in the header (desktop and mobile) and in the footer under "Employee Access". It has no iframe and no shared authentication. The URL is set in `src/lib/site.ts` (`EMPLOYEE_PORTAL_URL`).
+- **Stack:** Next.js 16 (App Router), TypeScript, Tailwind CSS 4 and Lucide icons. There is no animation library: motion uses CSS keyframes and IntersectionObserver, and it respects `prefers-reduced-motion`.
+- **Output:** every page is static.
+
+## Pages
+
+| Route | Purpose |
+|---|---|
+| `/` | Home: hero with dashboard mockups, the three product lines, Why NextWave?, NextWave at a Glance (animated counters), Our Direction |
+| `/about` | About Us: who we are, our story (2017 → today → 2027), at a glance, mission and vision, interactive values, expandable core competencies |
+| `/solutions` | Our Solutions: NextWave One, NextWave Insights and NextWave Solutions on one page, with alternating layouts, clickable feature tabs that change the interface preview, and a sticky product navigator |
+| `/strategy` | Our Strategy: 2027 strategy hero, interactive strategy map (a stacked grid on phones), expandable dashboard for Grow / Retain / Scale / Build, competitive context |
+
+Earlier URLs (`/solutions/flowops`, `/industries`, `/insights/*`, `/careers`, `/contact`) permanently redirect to the closest page. The redirects are in `next.config.ts`.
+
+## Where things live
+
+```
+src/lib/content.ts          ALL company content: facts, mission, vision, products (+ feature tabs),
+                            values, competencies, strategy priorities and targets
+src/app/globals.css         Design tokens (colors, radii, motion) and the type scale
+src/components/mockups.tsx  Interface mockups (app frame + 9 product screens + hero composition)
+src/components/             Header, Footer, ValuesExplorer, Competencies, ProductShowcase,
+                            ProductNav, StrategyMap, StrategyDashboard, FactsGrid, Counter…
+src/lib/useTabs.ts          Keyboard support (arrow keys / Home / End) for all tab-style controls
+```
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
-npm run build      # production build
-npm start          # serve the production build
+npm run dev     # http://localhost:3000
+npm run build
 ```
 
-## Structure
+## Deploy
 
-```
-src/app/
-  page.tsx                     Home
-  about/                       About NextWave (who we are, mission, vision, values, approach, organization, culture)
-  solutions/                   Solutions overview + comparison + how the products work together
-  solutions/[slug]/            FlowOps, Customer360, InsightIQ detail pages
-  industries/                  Four industry sections
-  insights/ , insights/[slug]  Articles list + five article pages
-  careers/                     Life at NextWave + "Explore Opportunities" (no vacancies listed)
-  contact/                     Validated contact form
-  sitemap.ts, robots.ts, icon.png, apple-icon.png, not-found.tsx, template.tsx (page transition)
-src/components/                Header, Footer, Logo, product cards, visuals, contact form…
-src/lib/                       All content: site.ts (company, values, departments, portal URL),
-                               products.ts, industries.ts, articles.ts
-public/brand/                  Official NextWave logo (on-dark / on-light), Open Graph image
-```
-
-All copy lives in `src/lib/*.ts`, so content changes and approvals do not touch the components.
-
-## Contact form
-
-The form checks every field in the browser: name, business email (free webmail addresses are rejected), company, area of interest, and a message of 20–2,000 characters.
-
-- **Without configuration** (the default), the form runs in demonstration mode. After validation it tells the visitor plainly that the message **has not been sent**. It never shows a false "delivered" message.
-- **To connect a real inbox**, set `NEXT_PUBLIC_CONTACT_ENDPOINT` to an HTTPS endpoint that accepts a JSON `POST`, such as Formspree, Basin or your own API. The form then shows "sent" only after the endpoint returns a 2xx response. See `.env.example`.
-
-## Deploy to Vercel
-
-1. In Vercel, choose **Add New → Project** and import `noraarafalogictraining-ai/NextWave-Website`. Keep the detected **Next.js** preset and the default Root Directory (`./`).
-2. Optional environment variables: `NEXT_PUBLIC_SITE_URL` (the final domain, used for canonical URLs, the sitemap and Open Graph) and `NEXT_PUBLIC_CONTACT_ENDPOINT`.
-3. Click **Deploy**. Every later push to `main` redeploys the site automatically.
-
-This is its own Vercel project. It is separate from the internal Performance Hub project.
+The Vercel project imports this repository with the default Next.js settings (`vercel.json` pins the framework). Every push to `main` redeploys automatically. You can optionally set `NEXT_PUBLIC_SITE_URL` to the final domain, which is used for canonical URLs, the sitemap and Open Graph.
 
 Content that still needs approval is listed in `APPROVALS.md`.

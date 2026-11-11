@@ -2,21 +2,21 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Sora } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SITE_URL, company } from "@/lib/site";
+import { SITE_URL, company } from "@/lib/content";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap", weight: ["400", "600", "700"] });
 
 const description =
-  "NextWave Digital helps organizations connect operations, understand customers and turn data into smarter decisions with FlowOps, Customer360 and InsightIQ.";
+  "NextWave Digital sells technology that helps companies manage their operations, customers and data, through NextWave One, NextWave Insights and NextWave Solutions.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: `${company.name} | ${company.slogan}`, template: `%s | ${company.name}` },
   description,
   applicationName: company.name,
-  keywords: ["NextWave Digital", "B2B software", "operations management", "customer relationship management", "business intelligence", "FlowOps", "Customer360", "InsightIQ"],
+  keywords: ["NextWave Digital", "business management platform", "data and AI", "customized technology solutions", "NextWave One", "NextWave Insights", "NextWave Solutions", "Cairo", "MENA"],
   openGraph: {
     type: "website",
     siteName: company.name,
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#070E24",
+  themeColor: "#0B1530",
   width: "device-width",
   initialScale: 1,
 };
@@ -41,6 +41,8 @@ const orgJsonLd = {
   name: company.name,
   url: SITE_URL,
   logo: `${SITE_URL}/brand/nextwave-logo-onlight.png`,
+  foundingDate: "2017",
+  address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" },
   slogan: company.slogan,
   description,
 };

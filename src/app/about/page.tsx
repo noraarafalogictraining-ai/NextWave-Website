@@ -1,187 +1,186 @@
 import type { Metadata } from "next";
-import { HeartHandshake, Target, Users, RefreshCw, Lightbulb, BookOpen, UserCheck, Search, Quote } from "lucide-react";
+import { Building2, Compass, Eye, Flag, Layers, MapPin, Rocket } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
-import CtaBand from "@/components/CtaBand";
-import ButtonLink from "@/components/ButtonLink";
-import DeptIllustration from "@/components/DeptIllustration";
-import { company, departments, values } from "@/lib/site";
+import FactsGrid from "@/components/FactsGrid";
+import ValuesExplorer from "@/components/ValuesExplorer";
+import Competencies from "@/components/Competencies";
+import { company, customerSectors, products, strategy } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "About NextWave",
-  description: "NextWave Digital is a growing B2B digital technology company that supports organizations through integrated software solutions.",
+  title: "About Us",
+  description: "NextWave Digital: a Cairo-based technology company helping organizations manage their operations, customers and data.",
   alternates: { canonical: "/about" },
 };
 
-const valueIcons = { HeartHandshake, Target, Users, RefreshCw } as const;
-
-const approach = [
-  { step: "Understand", body: "We begin with the client's goals, processes and customers, not with a product demonstration." },
-  { step: "Design", body: "We shape a practical solution from FlowOps, Customer360 and InsightIQ that fits how the client works." },
-  { step: "Deliver", body: "Our Product & Operations teams implement reliably, with clear milestones and shared visibility." },
-  { step: "Grow", body: "Customer Success supports adoption and helps clients get more value from their solutions over time." },
+const journey = [
+  {
+    icon: Flag,
+    when: "2017",
+    title: "NextWave is founded",
+    body: "NextWave Digital is founded in Cairo, Egypt.",
+  },
+  {
+    icon: Layers,
+    when: "Today",
+    title: "Three connected product lines",
+    body: `Approximately 650 people serve mid-sized and large organizations in Egypt and selected MENA markets through ${products.map((p) => p.name).join(", ").replace(/, ([^,]*)$/, " and $1")}.`,
+  },
+  {
+    icon: Rocket,
+    when: "2027",
+    title: strategy.challenge,
+    body: "The 2027 strategy sets out four priorities for the next stage of growth: Grow, Retain, Scale and Build.",
+  },
 ];
 
-const culture = [
-  { icon: Users, title: "Collaboration", body: "We solve problems across teams and share information openly." },
-  { icon: UserCheck, title: "Ownership", body: "We take responsibility for our commitments and follow through." },
-  { icon: BookOpen, title: "Learning", body: "We stay curious, learn from experience and help each other grow." },
-  { icon: Search, title: "Customer understanding", body: "We invest time in understanding our customers' businesses." },
-  { icon: Lightbulb, title: "Practical innovation", body: "We value ideas that solve real problems and can be delivered well." },
-];
+function HeroVisual() {
+  return (
+    <div className="relative mx-auto aspect-[5/4] w-full max-w-[520px]" aria-hidden>
+      <div className="absolute inset-[10%] rounded-full bg-gradient-to-tr from-cyan/25 via-violet/25 to-azure/20 blur-3xl" />
+      <svg viewBox="0 0 500 400" className="absolute inset-0 h-full w-full">
+        <defs>
+          <linearGradient id="ab-l" x1="0" x2="1"><stop offset="0" stopColor="#26D5F5" /><stop offset="1" stopColor="#A995FF" /></linearGradient>
+        </defs>
+        <circle cx="250" cy="200" r="150" fill="none" stroke="rgba(184,200,226,0.1)" />
+        <circle cx="250" cy="200" r="96" fill="none" stroke="rgba(184,200,226,0.08)" strokeDasharray="2 8" />
+        {["M250 200 L250 50", "M250 200 L120 275", "M250 200 L380 275"].map((d) => (
+          <path key={d} d={d} stroke="url(#ab-l)" strokeWidth="1.8" strokeDasharray="6 9" className="animate-dash" fill="none" />
+        ))}
+      </svg>
+      <div className="glass absolute left-1/2 top-1/2 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-3xl">
+        <Building2 className="h-8 w-8 text-cyan" />
+        <span className="mt-2 text-xs font-semibold text-fg">NextWave</span>
+      </div>
+      {[
+        { l: "Operations", c: "text-cyan", pos: "left-1/2 top-[12.5%] -translate-x-1/2 -translate-y-1/2" },
+        { l: "Data", c: "text-violet", pos: "left-[24%] top-[69%] -translate-x-1/2 -translate-y-1/2" },
+        { l: "Customers", c: "text-azure", pos: "left-[76%] top-[69%] -translate-x-1/2 -translate-y-1/2" },
+      ].map((n, i) => (
+        <div key={n.l} className={`absolute ${n.pos}`}>
+          <div className="glass animate-float rounded-full px-4 py-2 text-sm font-semibold" style={{ animationDelay: `${i * -2.5}s` }}>
+            <span className={n.c}>●</span> <span className="text-fg">{n.l}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
         eyebrow="About NextWave"
-        title={<>A growing technology partner for <span className="text-gradient">smarter business.</span></>}
-        lead={company.summary}
-        crumbs={[{ href: "/about", label: "About" }]}
+        title={<>Technology for operations, customers and <span className="text-gradient">data.</span></>}
+        lead={`${company.plain} Founded in 2017 and headquartered in Cairo, NextWave serves organizations in Egypt and selected MENA markets.`}
+        aside={<HeroVisual />}
       />
 
-      {/* WHO WE ARE */}
-      <section className="py-20 sm:py-24" aria-labelledby="who-heading">
+      {/* ABOUT */}
+      <section className="section bg-base-2" aria-labelledby="about-heading">
         <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
-            <SectionHeading id="who-heading" eyebrow="Who we are" title="Practical technology, connected around the way businesses work." />
+            <SectionHeading id="about-heading" eyebrow="Who we are" title="A technology partner for growing organizations." />
           </Reveal>
-          <Reveal delay={100} className="space-y-5 text-lg leading-8 text-ink-2">
-            <p>
-              NextWave Digital is a B2B digital technology and enterprise software company. We help organizations simplify their operations,
-              understand their customers and make better business decisions using technology and data.
-            </p>
-            <p>
-              Our business combines subscription-based software with enterprise technology services. Clients choose the solutions they
-              need today — FlowOps for operations, Customer360 for customer relationships and InsightIQ for business intelligence — and
-              connect them as their needs grow.
-            </p>
-            <p>
-              We are a growing company, and we intend to grow the right way: by delivering practical solutions, keeping our promises and
-              building long-term relationships with the organizations we serve.
-            </p>
+          <Reveal delay={100} className="space-y-6">
+            <p className="t-lead">{company.business}</p>
+            <div className="surface p-6">
+              <p className="t-label text-fg-3">Our customers</p>
+              <p className="t-body mt-2">{company.customers}</p>
+              <ul className="mt-5 flex flex-wrap gap-2" aria-label="Customer sectors">
+                {customerSectors.map((s) => (
+                  <li key={s} className="rounded-full border border-edge bg-fg/[0.04] px-3 py-1.5 text-sm text-fg-2">{s}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex items-center gap-3 text-sm text-fg-2">
+              <MapPin aria-hidden className="h-4 w-4 text-cyan" /> Headquartered in Cairo, Egypt
+            </div>
           </Reveal>
         </div>
       </section>
 
-      {/* MISSION & VISION */}
-      <section className="pb-20 sm:pb-24" aria-label="Mission and vision">
-        <div className="container-x grid gap-6 md:grid-cols-2">
-          {[
-            { label: "Our Mission", text: company.mission },
-            { label: "Our Vision", text: company.vision },
-          ].map((m, i) => (
-            <Reveal key={m.label} delay={i * 100} className="h-full">
-              <div className={`relative h-full overflow-hidden rounded-3xl p-8 sm:p-10 ${i === 0 ? "bg-navy-900 text-white" : "bg-gradient-to-br from-electric to-violet-ink text-white"}`}>
-                <Quote aria-hidden className="absolute right-6 top-6 h-16 w-16 text-white/10" />
-                <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan">{m.label}</h2>
-                <p className="mt-5 font-display text-2xl font-semibold leading-snug sm:text-[1.7rem]">{m.text}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* VALUES */}
-      <section className="bg-surface py-20 sm:py-24" aria-labelledby="values-heading">
+      {/* OUR STORY */}
+      <section className="section" aria-labelledby="story-heading">
         <div className="container-x">
           <Reveal>
-            <SectionHeading id="values-heading" eyebrow="Our values" title="What guides how we work." lead="Our values shape how we treat customers, how we work with each other and how we make decisions." />
+            <SectionHeading id="story-heading" eyebrow="Our story" title="From Cairo to selected MENA markets." />
           </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map((v, i) => {
-              const Icon = valueIcons[v.icon];
-              return (
-                <Reveal key={v.name} delay={i * 80} className="h-full">
-                  <div className="h-full rounded-3xl border border-line bg-white p-7">
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-electric to-violet text-white">
-                      <Icon aria-hidden className="h-6 w-6" />
-                    </span>
-                    <h3 className="mt-6 text-xl font-semibold text-ink">{v.name}</h3>
-                    <p className="mt-3 text-[0.95rem] leading-7 text-ink-2">{v.body}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* BUSINESS APPROACH */}
-      <section className="py-20 sm:py-24" aria-labelledby="approach-heading">
-        <div className="container-x">
-          <Reveal>
-            <SectionHeading id="approach-heading" eyebrow="Our business approach" title="From understanding to long-term value." lead="Every client relationship follows the same principle: solve the right problem first, then make sure the solution keeps delivering value." />
-          </Reveal>
-          <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {approach.map((a, i) => (
-              <Reveal as="li" key={a.step} delay={i * 80} className="relative rounded-3xl border border-line p-7">
-                <span className="font-display text-5xl font-bold text-gradient-light">0{i + 1}</span>
-                <h3 className="mt-4 text-xl font-semibold text-ink">{a.step}</h3>
-                <p className="mt-2 text-[0.95rem] leading-7 text-ink-2">{a.body}</p>
+          <ol className="relative mt-16 grid gap-6 lg:grid-cols-3">
+            <span aria-hidden className="absolute left-0 right-0 top-[27px] hidden h-px bg-gradient-to-r from-cyan/0 via-cyan/50 to-violet/0 lg:block" />
+            {journey.map(({ icon: I, when, title, body }, i) => (
+              <Reveal as="li" key={when} delay={i * 110} className="relative">
+                <span className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan/30 bg-base text-cyan shadow-[0_0_30px_-6px] shadow-cyan/50">
+                  <I aria-hidden className="h-6 w-6" />
+                </span>
+                <div className="surface mt-6 p-7">
+                  <p className="font-display text-3xl font-bold text-gradient">{when}</p>
+                  <h3 className="t-card mt-3 text-fg">{title}</h3>
+                  <p className="t-body mt-2">{body}</p>
+                </div>
               </Reveal>
             ))}
           </ol>
         </div>
       </section>
 
-      {/* ORGANIZATION */}
-      <section className="bg-surface py-20 sm:py-24" aria-labelledby="org-heading">
+      {/* AT A GLANCE */}
+      <section className="section bg-base-2" aria-labelledby="glance-heading">
         <div className="container-x">
           <Reveal>
-            <SectionHeading id="org-heading" eyebrow="Our organization" title="Three teams, one customer journey." lead="NextWave is organized around three core departments that work together from the first conversation with a client to long-term partnership." />
+            <SectionHeading id="glance-heading" eyebrow="NextWave at a glance" title="The company in brief." />
           </Reveal>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {departments.map((d, i) => (
-              <Reveal key={d.id} delay={i * 90} className="h-full">
-                <article className="flex h-full flex-col rounded-3xl border border-line bg-white p-4">
-                  <DeptIllustration dept={d.id} />
-                  <div className="flex flex-1 flex-col p-4 pt-6">
-                    <h3 className="text-2xl font-semibold text-ink">{d.name}</h3>
-                    <p className="mt-1 font-medium text-electric">{d.lead}</p>
-                    <p className="mt-3 text-[0.95rem] leading-7 text-ink-2">{d.body}</p>
-                    <ul className="mt-5 flex flex-wrap gap-2">
-                      {d.focus.map((f) => (
-                        <li key={f} className="rounded-full bg-surface px-3 py-1 text-xs font-medium text-ink-2">{f}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+          <div className="mt-12"><FactsGrid /></div>
         </div>
       </section>
 
-      {/* PEOPLE & CULTURE */}
-      <section className="py-20 sm:py-24" aria-labelledby="culture-heading">
-        <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:items-start">
+      {/* MISSION & VISION */}
+      <section className="section" aria-label="Mission and vision">
+        <div className="container-x grid gap-6 lg:grid-cols-2">
+          <Reveal className="h-full">
+            <article className="surface relative h-full overflow-hidden p-9 sm:p-12">
+              <div aria-hidden className="bg-grid absolute inset-0 opacity-70" />
+              <div className="relative">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan/12 text-cyan"><Compass aria-hidden className="h-6 w-6" /></span>
+                <h2 className="t-label mt-8 text-cyan">Our Mission</h2>
+                <p className="mt-4 font-display text-2xl font-semibold leading-snug text-fg sm:text-[1.75rem]">{company.mission}</p>
+              </div>
+            </article>
+          </Reveal>
+          <Reveal delay={100} className="h-full">
+            <article className="relative h-full overflow-hidden rounded-[var(--radius-card)] border border-violet/30 bg-gradient-to-br from-[#2a2170] via-raised to-base-2 p-9 sm:p-12">
+              <div aria-hidden className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-violet/30 blur-3xl" />
+              <div className="relative">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet/15 text-violet"><Eye aria-hidden className="h-6 w-6" /></span>
+                <h2 className="t-label mt-8 text-violet">Our Vision</h2>
+                <p className="mt-4 font-display text-2xl font-semibold leading-snug text-fg sm:text-[1.75rem]">{company.vision}</p>
+              </div>
+            </article>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* VALUES */}
+      <section className="section bg-base-2" aria-labelledby="values-heading">
+        <div className="container-x">
           <Reveal>
-            <SectionHeading id="culture-heading" eyebrow="Our people and culture" title="A culture built for practical progress." lead="Our people are the reason clients trust us. We look for colleagues who care about customers, take ownership and enjoy learning with others." />
-            <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/careers">Life at NextWave</ButtonLink>
-              <ButtonLink href="/contact" variant="outline" arrow={false}>Contact us</ButtonLink>
-            </div>
+            <SectionHeading id="values-heading" eyebrow="Our values" title="What guides how we work." lead="Select a value to see what it means at NextWave." />
           </Reveal>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {culture.map(({ icon: Icon, title, body }, i) => (
-              <Reveal key={title} delay={i * 60} className={i === culture.length - 1 ? "sm:col-span-2" : ""}>
-                <div className="flex h-full gap-4 rounded-2xl border border-line p-5">
-                  <Icon aria-hidden className="mt-0.5 h-6 w-6 shrink-0 text-electric" />
-                  <div>
-                    <h3 className="font-semibold text-ink">{title}</h3>
-                    <p className="mt-1 text-sm leading-6 text-ink-2">{body}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal className="mt-12"><ValuesExplorer /></Reveal>
         </div>
       </section>
 
-      <CtaBand />
+      {/* COMPETENCIES */}
+      <section className="section" aria-labelledby="comp-heading">
+        <div className="container-x">
+          <Reveal>
+            <SectionHeading id="comp-heading" eyebrow="Our core competencies" title="The capabilities we build in every team." lead="Six core competencies describe how NextWave people work. Open a card to read more." />
+          </Reveal>
+          <Reveal className="mt-12"><Competencies /></Reveal>
+        </div>
+      </section>
     </>
   );
 }
-
