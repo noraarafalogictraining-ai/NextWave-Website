@@ -5,7 +5,6 @@ import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import FactsGrid from "@/components/FactsGrid";
 import ValuesExplorer from "@/components/ValuesExplorer";
-import Competencies from "@/components/Competencies";
 import { company, customerSectors, products, strategy } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -172,15 +171,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* COMPETENCIES */}
-      <section className="section" aria-labelledby="comp-heading">
-        <div className="container-x">
-          <Reveal>
-            <SectionHeading id="comp-heading" eyebrow="Our core competencies" title="The capabilities we build in every team." lead="Six core competencies describe how NextWave people work. Open a card to read more." />
-          </Reveal>
-          <Reveal className="mt-12"><Competencies /></Reveal>
-        </div>
-      </section>
     </>
   );
 }

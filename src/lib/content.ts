@@ -4,7 +4,7 @@
  * Source of record: the "NextWave Company Profile" document. Facts, mission,
  * vision, products, business roles, customers, the 2027 business context and
  * objectives, values and the competitive landscape use its wording.
- * Text written for the website (for example competency descriptions) is listed
+ * Text written for the website (for example value explanations) is listed
  * in APPROVALS.md.
  */
 
@@ -128,17 +128,6 @@ export const values = [
     icon: "RefreshCw",
     body: "Markets and customer needs change quickly. We improve our products, our processes and ourselves a little every day.",
   },
-] as const;
-
-/* -------------------------------------------------------------- competencies */
-
-export const competencies = [
-  { id: "communication", name: "Communication", icon: "MessagesSquare", body: "Sharing information clearly and at the right time, listening actively, and adapting the message to the audience." },
-  { id: "problem-solving", name: "Problem Solving", icon: "Lightbulb", body: "Understanding the real problem, using evidence to analyze it, and turning that analysis into practical solutions." },
-  { id: "coaching", name: "Coaching", icon: "GraduationCap", body: "Helping others grow through honest feedback, guidance and opportunities to build their capabilities." },
-  { id: "adaptability", name: "Adaptability & Flexibility", icon: "Shuffle", body: "Responding constructively to change, adjusting priorities and approaches while keeping quality and goals in sight." },
-  { id: "accountability", name: "Accountability & Ownership", icon: "ShieldCheck", body: "Owning commitments and results, raising issues early and following through until the work is done." },
-  { id: "time-management", name: "Time Management", icon: "Clock", body: "Planning and prioritizing work so that commitments are delivered on time without compromising quality." },
 ] as const;
 
 /* ------------------------------------------------------------------ strategy */

@@ -19,10 +19,9 @@
 1. **Slogan** "Smarter Business. Better Experiences." This comes from the existing brand.
 2. **Strategy headline** "Scale Without Losing What Made Us Successful". This was required by the redesign brief.
 3. **Product subtitles** Business Management Platform / Data & AI Solution / Customized Technology Solutions. These come from the earlier company profile and don't conflict with the document.
-4. **Core competencies.** The six names come from the earlier company profile; the document doesn't list them. The one-sentence descriptions were written for the site.
-5. **Value explanations.** The document gives only the value names.
-6. **Short priority headings and "why it matters".** The headings (Win new business, Keep existing customers, Deliver reliably, Strengthen internal capability) come from the document's 2027 context sentence. The explanations are built from that same sentence and add no new facts or targets.
-7. **Product feature tabs** (three per product) and the "Why NextWave?" headings. These expand on the document's product descriptions.
+4. **Value explanations.** The document gives only the value names.
+5. **Short priority headings and "why it matters".** The headings (Win new business, Keep existing customers, Deliver reliably, Strengthen internal capability) come from the document's 2027 context sentence. The explanations are built from that same sentence and add no new facts or targets.
+6. **Product feature tabs** (three per product) and the "Why NextWave?" headings. These expand on the document's product descriptions.
 
 ## Removed because they conflicted with the document
 - "We sell technology…" → the document's "Who We Are" wording
@@ -33,6 +32,7 @@
 - "NextWave competes for…" and "three connected product lines" → not in the document, removed
 
 ## Not shown
+- Core competencies (removed at your request; not in the document)
 - Any link to the internal employee platform or simulation
 - Contact details, social accounts and legal pages (none are in the document)
 
