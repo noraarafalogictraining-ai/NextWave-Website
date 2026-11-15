@@ -16,23 +16,23 @@ const accent = {
 const why = [
   {
     icon: Layers,
-    title: "Three connected product lines",
-    body: "Operations, data and customized technology from one company, designed to work together.",
+    title: "From customized solutions to data and AI",
+    body: "Founded in 2017, NextWave began with customized technology solutions and expanded into business platforms, data analytics and AI-enabled services.",
   },
   {
     icon: LayoutDashboard,
     title: "Operations and customers in one place",
-    body: "NextWave One brings customers, daily operations and workflows together, so teams share the same picture.",
+    body: "NextWave One helps customers manage customers, daily operations and workflows in one place.",
   },
   {
     icon: LineChart,
     title: "Data that supports decisions",
-    body: "NextWave Insights helps organizations analyze their data, identify trends and make better decisions.",
+    body: "NextWave Insights helps customers analyze data, identify trends and make better decisions.",
   },
   {
     icon: Plug,
     title: "Solutions shaped around specific needs",
-    body: "NextWave Solutions addresses specific requirements and connects existing systems with NextWave products.",
+    body: "NextWave Solutions helps customers address specific needs and connect existing systems with NextWave products.",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function HomePage() {
               <span className="text-gradient block sm:whitespace-nowrap">Better Experiences.</span>
             </h1>
             <p className="t-lead mt-7 max-w-xl animate-rise [animation-delay:160ms]">
-              {company.plain} Three connected product lines help organizations run their operations, understand their customers and act on their data.
+              {company.plain}
             </p>
             <div className="mt-10 flex flex-col gap-3 animate-rise [animation-delay:240ms] sm:flex-row">
               <ButtonLink href="/solutions">Explore Our Solutions</ButtonLink>
@@ -73,8 +73,8 @@ export default function HomePage() {
             <SectionHeading
               id="solutions-heading"
               eyebrow="Our solutions"
-              title="Three product lines. One connected business."
-              lead={company.business}
+              title="Three solutions for operations, customers and data."
+              lead={company.customers}
             />
             <ButtonLink href="/solutions" variant="ghost" className="self-start lg:self-auto">View all solutions</ButtonLink>
           </Reveal>
@@ -97,7 +97,7 @@ export default function HomePage() {
                       <p className={`t-label ${a.text}`}>{p.sub}</p>
                       <h3 className="t-card mt-2 text-2xl text-fg">{p.name}</h3>
                       <p className="t-body mt-3">{p.body}</p>
-                      <p className="mt-4 border-l-2 border-edge-strong pl-3 text-sm leading-6 text-fg-3">{p.value}</p>
+                      <p className="mt-4 border-l-2 border-edge-strong pl-3 text-sm leading-6 text-fg-3"><span className="text-fg-2">Business role:</span> {p.role}</p>
                       <span className={`mt-auto inline-flex items-center gap-1.5 pt-7 text-sm font-semibold ${a.text}`}>
                         Explore {p.name}
                         <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -120,7 +120,7 @@ export default function HomePage() {
               id="why-heading"
               eyebrow="Why NextWave?"
               title={<>Technology for the way <span className="text-gradient">businesses actually work.</span></>}
-              lead="NextWave helps organizations manage their operations, customers and data more effectively, with technology that improves performance and creates lasting customer value."
+              lead={`Our mission: ${company.mission}`}
             />
             <div className="mt-10 hidden lg:block">
               <AppFrame title="NextWave Insights · Trend monitor" active={3}>
@@ -148,7 +148,7 @@ export default function HomePage() {
       <section className="section relative bg-base-2" aria-labelledby="glance-heading">
         <div className="container-x">
           <Reveal>
-            <SectionHeading id="glance-heading" eyebrow="NextWave at a glance" title="A growing technology company, rooted in Cairo." align="center" />
+            <SectionHeading id="glance-heading" eyebrow="NextWave at a glance" title="NextWave Digital in brief." align="center" />
           </Reveal>
           <div className="mt-14">
             <FactsGrid />
@@ -167,7 +167,7 @@ export default function HomePage() {
               <div>
                 <p className="eyebrow"><span aria-hidden className="h-px w-6 bg-cyan/70" />Our direction · {strategy.title}</p>
                 <h2 id="direction-heading" className="t-section mt-4">{strategy.challenge}</h2>
-                <p className="t-lead mt-5">Four strategic priorities guide how NextWave grows over the coming years.</p>
+                <p className="t-lead mt-5">{strategy.context}</p>
                 <div className="mt-9">
                   <ButtonLink href="/strategy">Explore Our Strategy</ButtonLink>
                 </div>

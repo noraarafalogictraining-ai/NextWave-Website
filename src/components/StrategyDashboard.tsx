@@ -23,7 +23,7 @@ function Meter({ p }: { p: Priority }) {
           <span className="font-display text-lg font-semibold" style={{ color: p.accent }}>{p.target.to}</span>
         </div>
         <div className="mt-3 h-2.5 rounded-full" style={{ background: `linear-gradient(90deg, ${p.accent}22, ${p.accent})` }} aria-hidden />
-        <div className="mt-1.5 text-[11px] text-fg-3" aria-hidden>New business + growth within existing relationships</div>
+        <div className="mt-1.5 text-[11px] text-fg-3" aria-hidden>Achieve 18% revenue growth</div>
       </div>
     );
   }
@@ -98,7 +98,7 @@ export default function StrategyDashboard() {
                   <div>
                     <dt className="t-label text-fg-3">Business target</dt>
                     <dd className="mt-1.5 leading-7 text-fg-2">
-                      {p.target ? (p.target.from ? `${p.target.label}: from ${p.target.from} to ${p.target.to}.` : `${p.target.label}: ${p.target.to}.`) : "No numeric target. Progress is reflected in the talent pipeline, succession readiness and critical capabilities."}
+                      {p.target ? (p.target.from ? `${p.target.label}: from ${p.target.from} to ${p.target.to}.` : `${p.target.label}: ${p.target.to}.`) : "No numeric target is set for this objective."}
                     </dd>
                   </div>
                   <div>

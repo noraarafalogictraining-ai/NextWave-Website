@@ -14,7 +14,7 @@ const pos = [
 
 function Target({ p }: { p: Priority }) {
   if (!p.target) {
-    return <p className="text-sm text-fg-2">Capability priority. No numeric target is set.</p>;
+    return <p className="text-sm text-fg-2">No numeric target is set for this objective.</p>;
   }
   return (
     <div className="flex items-end gap-4">

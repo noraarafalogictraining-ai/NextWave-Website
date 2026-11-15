@@ -1,9 +1,11 @@
 /**
  * Single source of company content for the NextWave Digital website.
  *
- * Established facts, mission, vision, products, values, competencies and the
- * 2027 strategy follow the NextWave company profile. Text that had to be written
- * for the website (for example competency descriptions) is listed in APPROVALS.md.
+ * Source of record: the "NextWave Company Profile" document. Facts, mission,
+ * vision, products, business roles, customers, the 2027 business context and
+ * objectives, values and the competitive landscape use its wording.
+ * Text written for the website (for example competency descriptions) is listed
+ * in APPROVALS.md.
  */
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://nextwave-website-beta.vercel.app").replace(/\/$/, "");
@@ -11,11 +13,13 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://nextwave-w
 export const company = {
   name: "NextWave Digital",
   slogan: "Smarter Business. Better Experiences.",
-  plain: "We sell technology that helps companies manage their operations, customers and data.",
-  business:
-    "NextWave sells technology that helps companies manage their operations, customers and data, through three connected product lines.",
+  // "Who We Are"
+  plain: "NextWave Digital is a technology company helping organizations manage their operations, customers and data.",
+  history:
+    "Founded in 2017, it began with customized technology solutions and expanded into business platforms, data analytics and AI-enabled services.",
+  // "Our Customers"
   customers:
-    "Primarily mid-sized and large organizations across banking, telecom, retail, hospitality and professional services.",
+    "We serve primarily mid-sized and large organizations in banking, telecommunications, retail, hospitality and professional services.",
   mission:
     "To help organizations manage their operations, customers and data more effectively through smart technology that improves performance and creates lasting customer value.",
   vision: "To shape the future of business through smarter, connected digital experiences.",
@@ -24,11 +28,11 @@ export const company = {
 export const facts = [
   { id: "founded", label: "Founded", value: 2017, display: "2017", kind: "year" as const },
   { id: "hq", label: "Headquarters", display: "Cairo, Egypt", kind: "text" as const },
-  { id: "employees", label: "Employees", value: 650, prefix: "≈", display: "Approximately 650", kind: "number" as const },
+  { id: "employees", label: "Size", value: 650, prefix: "≈", display: "Approximately 650 employees", kind: "number" as const },
   { id: "markets", label: "Markets", display: "Egypt and selected MENA markets", kind: "text" as const },
 ];
 
-export const customerSectors = ["Banking", "Telecom", "Retail", "Hospitality", "Professional services"];
+export const customerSectors = ["Banking", "Telecommunications", "Retail", "Hospitality", "Professional services"];
 
 export const navLinks = [
   { href: "/", label: "Home" },
@@ -47,9 +51,10 @@ export type Product = {
   id: ProductId;
   name: string;
   sub: string;
+  /** "What it helps customers do" in the profile. */
   body: string;
+  /** "Business role" in the profile. */
   role: string;
-  value: string;
   accent: "cyan" | "violet" | "blue";
   tabs: ProductTab[];
 };
@@ -59,9 +64,8 @@ export const products: Product[] = [
     id: "nextwave-one",
     name: "NextWave One",
     sub: "Business Management Platform",
-    body: "Helps companies manage customers, daily operations and workflows in one place.",
-    role: "Protect the core",
-    value: "One place for customers, daily operations and workflows, so teams work from the same picture.",
+    body: "Manage customers, daily operations and workflows in one place.",
+    role: "Protect the core business",
     accent: "cyan",
     tabs: [
       { id: "operations", label: "Operations overview", title: "See daily operations in one place", body: "A shared view of the work in progress across teams, so managers can see what is moving and what needs attention." },
@@ -73,9 +77,8 @@ export const products: Product[] = [
     id: "nextwave-insights",
     name: "NextWave Insights",
     sub: "Data & AI Solution",
-    body: "Helps companies analyze data, identify trends and make better decisions.",
-    role: "Build the future",
-    value: "Turns business data into trends and insight that support better decisions.",
+    body: "Analyze data, identify trends and make better decisions.",
+    role: "Build future growth through data and AI",
     accent: "violet",
     tabs: [
       { id: "analytics", label: "Business analytics", title: "Analyze business data", body: "Bring business data together and explore it from different angles to understand what is happening." },
@@ -87,9 +90,8 @@ export const products: Product[] = [
     id: "nextwave-solutions",
     name: "NextWave Solutions",
     sub: "Customized Technology Solutions",
-    body: "Helps customers solve specific needs or connect existing systems with NextWave products.",
+    body: "Address specific needs and connect existing systems with NextWave products.",
     role: "Capture high-value opportunities",
-    value: "Tailored technology that solves specific needs and connects existing systems with NextWave products.",
     accent: "blue",
     tabs: [
       { id: "integrations", label: "System connections", title: "Connect existing systems", body: "Link the systems a customer already relies on with NextWave products, so information flows where it is needed." },
@@ -144,10 +146,14 @@ export const competencies = [
 export const strategy = {
   title: "2027 Strategy",
   challenge: "Scale Without Losing What Made Us Successful",
-  context: [
-    "NextWave competes for mid-sized and large organizations in Egypt and selected MENA markets.",
-    "The 2027 challenge is to scale without losing what made the company successful.",
-  ],
+  // "The Business Context: 2027"
+  context:
+    "NextWave enters 2027 with growth opportunities and increasing operational pressure. Winning new business, keeping existing customers, delivering reliably and strengthening internal capability must happen together.",
+  // "Competitive Landscape"
+  competitor: {
+    name: "Valtora Technologies",
+    text: "Valtora Technologies is a growing competitor known for faster implementation, competitive pricing and increasingly AI-enabled solutions. Its presence influences customer expectations and sales conversations.",
+  },
 };
 
 export type Priority = {
@@ -163,37 +169,37 @@ export type Priority = {
 export const priorities: Priority[] = [
   {
     key: "GROW",
-    title: "Grow revenue",
-    text: "18% revenue growth through new business and growth within existing customer relationships.",
+    title: "Win new business",
+    text: "Achieve 18% revenue growth.",
     target: { to: "18%", label: "Revenue growth" },
-    focus: ["New business", "Growth within existing customer relationships"],
-    why: "Growth funds NextWave's investment in its products and people. It comes from two sources: winning new customers and expanding the value delivered to existing ones.",
+    focus: ["Revenue growth"],
+    why: "Winning new business is one of four things that must happen together as NextWave enters 2027 with growth opportunities and increasing operational pressure.",
     accent: "#26D5F5",
   },
   {
     key: "RETAIN",
-    title: "Retain customers",
-    text: "Increase customer retention from 88% to 93% through customer experience, usage and value.",
+    title: "Keep existing customers",
+    text: "Improve customer retention from 88% to 93%.",
     target: { from: "88%", to: "93%", label: "Customer retention" },
-    focus: ["Customer experience", "Usage", "Value"],
-    why: "Long-term customer relationships are at the heart of NextWave's model. Customers stay when they have a good experience, actively use the solutions and see real value.",
+    focus: ["Customer retention"],
+    why: "Keeping existing customers must happen together with winning new business, delivering reliably and strengthening internal capability.",
     accent: "#A995FF",
   },
   {
     key: "SCALE",
-    title: "Scale delivery",
-    text: "Increase on-time delivery from 82% to 92% while maintaining quality and efficiency.",
+    title: "Deliver reliably",
+    text: "Improve on-time delivery from 82% to 92%.",
     target: { from: "82%", to: "92%", label: "On-time delivery" },
-    focus: ["On-time delivery", "Quality", "Efficiency"],
-    why: "As the business grows, delivery must keep pace. Reliable, on-time delivery that maintains quality and efficiency protects the reputation NextWave has built.",
+    focus: ["On-time delivery"],
+    why: "NextWave enters 2027 with increasing operational pressure, so delivering reliably must keep pace with growth.",
     accent: "#5B8CFF",
   },
   {
     key: "BUILD",
-    title: "Build capability",
-    text: "Strengthen the talent pipeline, succession readiness and critical capabilities while reducing key-person dependency.",
-    focus: ["Talent pipeline", "Succession readiness", "Critical capabilities", "Reduced key-person dependency"],
-    why: "Scaling sustainably depends on people. A stronger talent pipeline and succession readiness keep critical capabilities in the organization, not with a few individuals.",
+    title: "Strengthen internal capability",
+    text: "Strengthen critical capabilities, succession readiness and the talent pipeline; reduce key-person dependency.",
+    focus: ["Critical capabilities", "Succession readiness", "Talent pipeline", "Reduce key-person dependency"],
+    why: "Strengthening internal capability must happen together with winning new business, keeping existing customers and delivering reliably.",
     accent: "#F5B84A",
   },
 ];

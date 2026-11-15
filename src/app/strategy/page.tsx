@@ -52,7 +52,7 @@ export default function StrategyPage() {
       <PageHero
         eyebrow={`Our strategy · ${strategy.title}`}
         title={<>Scale Without Losing <span className="text-gradient">What Made Us Successful.</span></>}
-        lead={strategy.context.join(" ")}
+        lead={strategy.context}
         aside={<HeroBadge />}
       >
         <ButtonLink href="#strategy-map">Explore the priorities</ButtonLink>
@@ -79,13 +79,13 @@ export default function StrategyPage() {
       <section className="section bg-base-2" aria-labelledby="context-heading">
         <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start">
           <Reveal>
-            <SectionHeading id="context-heading" eyebrow="Competitive context" title="Where NextWave competes." />
+            <SectionHeading id="context-heading" eyebrow="Competitive landscape" title="The market NextWave competes in." />
           </Reveal>
           <div className="grid gap-4">
             {[
-              { icon: Globe2, label: "Market", text: strategy.context[0] },
+              { icon: Globe2, label: "Markets", text: "Egypt and selected MENA markets." },
               { icon: Building2, label: "Customers", text: company.customers },
-              { icon: Target, label: "The 2027 challenge", text: strategy.context[1] },
+              { icon: Target, label: `Competitor · ${strategy.competitor.name}`, text: strategy.competitor.text },
             ].map(({ icon: I, label, text }, i) => (
               <Reveal key={label} delay={i * 80}>
                 <div className="surface flex gap-5 p-6">

@@ -18,20 +18,20 @@ const journey = [
   {
     icon: Flag,
     when: "2017",
-    title: "NextWave is founded",
-    body: "NextWave Digital is founded in Cairo, Egypt.",
+    title: "Founded with customized technology solutions",
+    body: "NextWave Digital is founded in 2017 and begins with customized technology solutions.",
   },
   {
     icon: Layers,
-    when: "Today",
-    title: "Three connected product lines",
-    body: `Approximately 650 people serve mid-sized and large organizations in Egypt and selected MENA markets through ${products.map((p) => p.name).join(", ").replace(/, ([^,]*)$/, " and $1")}.`,
+    when: "Expansion",
+    title: "Platforms, data analytics and AI",
+    body: `NextWave expands into business platforms, data analytics and AI-enabled services. Today, approximately 650 employees serve customers in Egypt and selected MENA markets through ${products.map((p) => p.name).join(", ").replace(/, ([^,]*)$/, " and $1")}.`,
   },
   {
     icon: Rocket,
     when: "2027",
-    title: strategy.challenge,
-    body: "The 2027 strategy sets out four priorities for the next stage of growth: Grow, Retain, Scale and Build.",
+    title: "Growth opportunities and operational pressure",
+    body: strategy.context,
   },
 ];
 
@@ -74,7 +74,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About NextWave"
         title={<>Technology for operations, customers and <span className="text-gradient">data.</span></>}
-        lead={`${company.plain} Founded in 2017 and headquartered in Cairo, NextWave serves organizations in Egypt and selected MENA markets.`}
+        lead={`${company.plain} ${company.history}`}
         aside={<HeroVisual />}
       />
 
@@ -82,10 +82,10 @@ export default function AboutPage() {
       <section className="section bg-base-2" aria-labelledby="about-heading">
         <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
-            <SectionHeading id="about-heading" eyebrow="Who we are" title="A technology partner for growing organizations." />
+            <SectionHeading id="about-heading" eyebrow="Who we are" title="Helping organizations manage their operations, customers and data." />
           </Reveal>
           <Reveal delay={100} className="space-y-6">
-            <p className="t-lead">{company.business}</p>
+            <p className="t-lead">{company.plain} {company.history}</p>
             <div className="surface p-6">
               <p className="t-label text-fg-3">Our customers</p>
               <p className="t-body mt-2">{company.customers}</p>
@@ -106,7 +106,7 @@ export default function AboutPage() {
       <section className="section" aria-labelledby="story-heading">
         <div className="container-x">
           <Reveal>
-            <SectionHeading id="story-heading" eyebrow="Our story" title="From Cairo to selected MENA markets." />
+            <SectionHeading id="story-heading" eyebrow="Our story" title="From customized solutions to data and AI." />
           </Reveal>
           <ol className="relative mt-16 grid gap-6 lg:grid-cols-3">
             <span aria-hidden className="absolute left-0 right-0 top-[27px] hidden h-px bg-gradient-to-r from-cyan/0 via-cyan/50 to-violet/0 lg:block" />

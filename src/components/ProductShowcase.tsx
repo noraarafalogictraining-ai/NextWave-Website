@@ -26,7 +26,7 @@ export default function ProductShowcase({ product, index, reverse }: { product: 
         <h2 id={`${product.id}-heading`} className="t-section mt-3 text-fg">{product.name}</h2>
         <p className="t-lead mt-5">{product.body}</p>
         <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-edge bg-fg/[0.04] px-3.5 py-1.5 text-sm text-fg-2">
-          <span className={`h-1.5 w-1.5 rounded-full ${a.bg}`} aria-hidden /> Strategic role: <span className="font-semibold text-fg">{product.role}</span>
+          <span className={`h-1.5 w-1.5 rounded-full ${a.bg}`} aria-hidden /> Business role: <span className="font-semibold text-fg">{product.role}</span>
         </p>
 
         <div role="tablist" aria-label={`${product.name} features`} aria-orientation="vertical" className="mt-9 space-y-2.5">

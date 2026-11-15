@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap", weight: ["400", "600", "700"] });
 
 const description =
-  "NextWave Digital sells technology that helps companies manage their operations, customers and data, through NextWave One, NextWave Insights and NextWave Solutions.";
+  "NextWave Digital is a technology company helping organizations manage their operations, customers and data, through NextWave One, NextWave Insights and NextWave Solutions.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

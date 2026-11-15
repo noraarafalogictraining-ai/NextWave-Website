@@ -38,7 +38,7 @@ export default function SolutionsPage() {
       <PageHero
         eyebrow="Our solutions"
         title={<>Three product lines for <span className="text-gradient">smarter business.</span></>}
-        lead={company.business}
+        lead={company.plain}
         aside={<HeroStack />}
       >
         <a href={`#${products[0].id}`} className="inline-flex items-center gap-2 text-sm font-semibold text-cyan hover:text-fg">
@@ -72,7 +72,7 @@ export default function SolutionsPage() {
               <p className="eyebrow justify-center"><span aria-hidden className="h-px w-6 bg-cyan/70" />Connected by design</p>
               <h2 id="connected-heading" className="t-section mt-4">Each product line plays its part in our strategy.</h2>
               <p className="t-lead mt-5">
-                {products.map((p) => `${p.name}: ${p.role.toLowerCase()}`).join(" · ")}.
+                {products.map((p) => `${p.name}: ${p.role.charAt(0).toLowerCase()}${p.role.slice(1)}`).join(" · ")}.
               </p>
               <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
                 <ButtonLink href="/strategy">Explore Our Strategy</ButtonLink>
